@@ -1,5 +1,9 @@
+import { Subject } from "rxjs";
+
 export class UserService {
-    users = [
+    userSubject = new Subject<any[]>();
+
+    private users = [
         {
             id: 1,
             firstName: 'Franck',
@@ -17,6 +21,10 @@ export class UserService {
         },
     ];
 
+    emitUserSubject() {
+        this.userSubject.next(this.users.slice());
+    }
+
     getUserById(id: number) {
         const user = this.users.find(
             (userObject) => {
@@ -28,9 +36,11 @@ export class UserService {
 
     editFirstNameOneUser(index: number, firstName: string) {
         this.users[index].firstName = firstName;
+        this.emitUserSubject();
     }
 
     editLastNameOneUser(index: number, lastName: string) {
         this.users[index].lastName = lastName;
+        this.emitUserSubject();
     }
 }
