@@ -12,12 +12,13 @@ import { SingleUserViewComponent } from './single-user-view/single-user-view.com
 import { AuthService } from './services/auth.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { HomeViewComponent } from './home-view/home-view.component';
 
 const appRoutes: Routes = [
   { path: 'users', canActivate:[AuthGuard], component: UserViewComponent},
   { path: 'users/:id', canActivate:[AuthGuard], component: SingleUserViewComponent},
   { path: 'auth', component: AuthComponent},
-  { path: '', component: UserViewComponent},
+  { path: '', component: HomeViewComponent},
   { path: '**', component: NotFoundComponent},
 ];
 
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     UserViewComponent,
     UserComponent,
     SingleUserViewComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    HomeViewComponent
   ],
   imports: [
     BrowserModule,
