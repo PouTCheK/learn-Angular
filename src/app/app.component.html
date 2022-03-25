@@ -1,20 +1,40 @@
-<div class="container py-3">
-  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-      <img alt="logo" src="../favicon.ico">
-    </a>
-
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a routerLink="/" class="nav-link px-2 link-secondary">Accueil</a></li>
-      <li><a routerLink="users" class="nav-link px-2 link-dark">Utilisateurs</a></li>
-    </ul>
-
-    <div class="col-md-3 text-end">
-      <a routerLink="auth" class="btn btn-outline-primary me-2">Login</a>
-      <a routerLink="auth" class="btn btn-primary">Sign-up</a>
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" routerLink="/">Learn Angular</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
+          data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+          aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap" style="display: flex;">
+      <a *ngIf="authStatus" class="nav-link px-3" (click)="onSignOut()" style="cursor: pointer;">Sign out</a>
+      <a *ngIf="!authStatus" class="nav-link px-3" routerLink="auth/signup">Créer un compte</a>
+      <a *ngIf="!authStatus" class="nav-link px-3" routerLink="auth/signin">Connexion</a>
     </div>
-  </header>
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+  </div>
+</header>
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]={exact:true} aria-current="page" routerLink="/">
+              <mat-icon style="vertical-align: middle;">home</mat-icon>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" aria-current="page" routerLink="users">
+              <mat-icon style="vertical-align: middle;">supervised_user_circle</mat-icon>
+              Users
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
 </div>

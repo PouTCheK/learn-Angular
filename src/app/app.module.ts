@@ -1,23 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
-import { UserViewComponent } from './user-view/user-view.component';
 
 import { UserService } from './services/user.service';
-import { UserComponent } from './user/user.component';
-import { SingleUserViewComponent } from './single-user-view/single-user-view.component';
+import { SingleUserViewComponent } from './users/single-user-view/single-user-view.component';
 import { AuthService } from './services/auth.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { HomeViewComponent } from './home-view/home-view.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
+import { UsersFormComponent } from './users/users-form/users-form.component';
 
 const appRoutes: Routes = [
-  { path: 'users', canActivate:[AuthGuard], component: UserViewComponent},
+  { path: 'users', canActivate:[AuthGuard], component: UsersListComponent},
+  { path: 'users/new', canActivate:[AuthGuard], component: UsersFormComponent},
   { path: 'users/:id', canActivate:[AuthGuard], component: SingleUserViewComponent},
-  { path: 'auth', component: AuthComponent},
+  { path: 'auth/signup', component: SignupComponent},
+  { path: 'auth/signin', component: SigninComponent},
   { path: '', component: HomeViewComponent},
   { path: '**', component: NotFoundComponent},
 ];
@@ -25,16 +31,21 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
-    UserViewComponent,
-    UserComponent,
     SingleUserViewComponent,
     NotFoundComponent,
-    HomeViewComponent
+    HomeViewComponent,
+    SigninComponent,
+    SignupComponent,
+    UsersListComponent,
+    UsersFormComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     UserService,

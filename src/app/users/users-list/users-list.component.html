@@ -1,0 +1,55 @@
+<header>
+    <div class="container-fluid">
+        <div class="border-bottom pt-6">
+            <div class="row align-items-center">
+                <div class="col-sm col-12">
+                    <h1 class="h2 ls-tight">Users</h1>
+                </div>
+                <div class="col-sm-auto col-12 mt-4 mt-sm-0">
+                    <div class="hstack gap-2 justify-content-sm-end">
+                        <a (click)="onNewUser()" class="btn btn-sm btn-primary" data-bs-toggle="offcanvas">
+                            <span>Créer utilisateur</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Created at</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users; let i = index">
+                    <td>
+                        <img alt="..." src="https://clever-dashboard.webpixels.work/img/people/img-3.jpg" class="avatar avatar-sm rounded-circle me-2">
+                        <a class="text-heading text-primary-hover font-semibold" [routerLink]="[i]">{{ user.firstName }} {{ user.lastName }}</a>
+                    </td>
+                    <td>Feb 15, 2021</td>
+                    <td>
+                        <span class="badge text-uppercase bg-soft-primary rounded-pill">{{user.position}}</span>
+                    </td>
+                    <td>{{user.email}}</td>
+                    <td class="text-end">
+                        <a [routerLink]="[i]" class="btn btn-sm btn-square btn-neutral">
+                            <mat-icon>create</mat-icon>
+                        </a>
+                        <a (click)="onDeleteUser(user)" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                            <mat-icon>delete_outline</mat-icon>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
