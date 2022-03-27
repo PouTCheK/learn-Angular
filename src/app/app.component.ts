@@ -4,7 +4,7 @@ import { AuthService } from './services/auth.service';
 import { initializeApp } from "firebase/app";
 
 @Component({
-  selector: 'app-root',
+  selector: 'ngx-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

@@ -33,7 +33,7 @@
                 <tr *ngFor="let user of users; let i = index">
                     <td>
                         <img alt="..." src="https://clever-dashboard.webpixels.work/img/people/img-3.jpg" class="avatar avatar-sm rounded-circle me-2">
-                        <a class="text-heading text-primary-hover font-semibold" [routerLink]="[i]">{{ user.firstName }} {{ user.lastName }}</a>
+                        <a class="text-heading text-primary-hover font-semibold" [routerLink]="['/users', i]">{{ user.firstName }} {{ user.lastName }}</a>
                     </td>
                     <td>Feb 15, 2021</td>
                     <td>
@@ -41,7 +41,7 @@
                     </td>
                     <td>{{user.email}}</td>
                     <td class="text-end">
-                        <a [routerLink]="[i]" class="btn btn-sm btn-square btn-neutral">
+                        <a [routerLink]="['/users', i]" class="btn btn-sm btn-square btn-neutral">
                             <mat-icon>create</mat-icon>
                         </a>
                         <a (click)="onDeleteUser(user)" class="btn btn-sm btn-square btn-neutral text-danger-hover">

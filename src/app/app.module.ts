@@ -18,6 +18,8 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { UsersFormComponent } from './users/users-form/users-form.component';
 
+import { AppRoutingModule } from './app-routing.module';
+
 const appRoutes: Routes = [
   { path: 'users', canActivate:[AuthGuard], component: UsersListComponent},
   { path: 'users/new', canActivate:[AuthGuard], component: UsersFormComponent},
@@ -41,11 +43,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     UserService,
