@@ -1,0 +1,5 @@
+.btn-success:disabled {
+    cursor: not-allowed;
+    background-color: #26c6da47;
+    border-color: #26c6da47;
+}

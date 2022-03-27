@@ -20,16 +20,6 @@ import { UsersFormComponent } from './users/users-form/users-form.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
-const appRoutes: Routes = [
-  { path: 'users', canActivate:[AuthGuard], component: UsersListComponent},
-  { path: 'users/new', canActivate:[AuthGuard], component: UsersFormComponent},
-  { path: 'users/:id', canActivate:[AuthGuard], component: SingleUserViewComponent},
-  { path: 'auth/signup', component: SignupComponent},
-  { path: 'auth/signin', component: SigninComponent},
-  { path: '', component: HomeViewComponent},
-  { path: '**', component: NotFoundComponent},
-];
-
 @NgModule({
   declarations: [
     AppComponent,

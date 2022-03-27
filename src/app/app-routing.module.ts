@@ -13,22 +13,12 @@ export const routes: Routes = [
             .then(m => m.UsersModule),
     },
     {
-        path: 'auth',
+        path: 'auth/login',
         component: SigninComponent,
-        children: [
-            {
-                path: '',
-                component: SigninComponent,
-            },
-            {
-                path: 'login',
-                component: SigninComponent,
-            },
-            {
-                path: 'register',
-                component: SignupComponent,
-            },
-        ],
+    },
+    {
+        path: 'auth/register',
+        component: SignupComponent,
     },
     { path: '', redirectTo: 'users', pathMatch: 'full' },
     { path: '**', redirectTo: 'users' },
